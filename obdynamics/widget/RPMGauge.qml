@@ -2,6 +2,7 @@ import QtQuick 1.0
 import ODBWidgets 1.0
 
 Rectangle {
+    id: circularGaugeContainer
     width: 500
     height: 500
     color: "transparent"
@@ -9,26 +10,27 @@ Rectangle {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            circularGauge.value = 100
+            rpmGauge.value = 100
         }
     }
 
     CircularGauge {
-        id: circularGauge
+        id: rpmGauge
+        objectName: "rpmGauge"
         radius: 200
         stroke: 60
         strokeColor: Qt.rgba(0 / 255, 150 / 255, 255 / 255, 0.7)
 
         value: 0
-        maxValue: 100
+        maxValue: 6000
 
         anchors.centerIn: parent
 
         NumberAnimation {
             id: testGauge
-            target: circularGauge
+            target: rpmGauge
             properties: "value"
-            from: circularGauge.value
+            from: rpmGauge.value
             to: 100
             duration: 4000
             easing.type: Easing.Linear
@@ -43,7 +45,7 @@ Rectangle {
     }
 
     Text {
-        text: circularGauge.value
+        text: rpmGauge.value
 
         color: "white"
         font.pixelSize: 30
