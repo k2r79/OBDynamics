@@ -4,12 +4,12 @@ from PySide.QtCore import QThread
 from obdlib.OBDUtils import OBDUtils
 
 
-class RPMThread(QThread):
+class SpeedThread(QThread):
     newValueSignal = QtCore.Signal(int)
 
     def __init__(self, *args, **kwargs):
-        super(RPMThread, self).__init__(*args, **kwargs)
-        self._obdutils = OBDUtils("66:35:56:78:90:AB", 1, True)
+        super(SpeedThread, self).__init__(*args, **kwargs)
+        self._obdutils = OBDUtils("66:35:56:78:90:AB", 1, False)
 
     def run(self):
         self._obdutils.connect()
@@ -17,27 +17,25 @@ class RPMThread(QThread):
 
         while True:
             try:
-                engine_rpm = self._obdutils.engine_rpm()
-                self.newValueSignal.emit(engine_rpm)
+                vehicule_speed = self._obdutils.vehicule_speed()
+                self.newValueSignal.emit(vehicule_speed)
             except Exception:
                 print("An error has occurred... retrying...")
 
-            time.sleep(0.20)
+            time.sleep(0.100)
 
     def exit(self, *args, **kwargs):
         self.obdutils.close()
-
-        super(RPMThread, self).exit(*args, **kwargs)
-
+        super(SpeedThread, self).exit(*args, **kwargs)
 
     @property
     def obdutils(self):
         return self._obdutils
 
     @property
-    def rpmGauge(self):
-        return self._rpmGauge
+    def speedGauge(self):
+        return self._speedGauge
 
-    @rpmGauge.setter
-    def rpmGauge(self, rpmGauge):
-        self._rpmGauge = rpmGauge
+    @speedGauge.setter
+    def speedGauge(self, speedGauge):
+        self._speedGauge = speedGauge

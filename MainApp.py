@@ -6,11 +6,11 @@ import sys
 from PySide.QtCore import *
 from PySide.QtGui import *
 from PySide.QtDeclarative import QDeclarativeView, qmlRegisterType
-from obdynamics.threads.RPMThread import RPMThread
+from obdynamics.threads.SpeedThread import SpeedThread
 from obdynamics.widget.OBDWidgets import CircularGauge
 
-def setRPMGaugeValue(value):
-    rpmGauge.setValue(value)
+def setSpeedGaugeValue(value):
+    speedGauge.setValue(value)
 
 app = QApplication(sys.argv)
 
@@ -24,13 +24,13 @@ url = QUrl('view.qml')
 view.setSource(url)
 view.show()
 
-rpmGauge = view.rootObject().findChild(CircularGauge, "rpmGauge")
-rpmThread = RPMThread()
+speedGauge = view.rootObject().findChild(CircularGauge, "speedGauge")
 
-rpmThread.newValueSignal.connect(setRPMGaugeValue)
-rpmThread.start()
+speedThread = SpeedThread()
+speedThread.newValueSignal.connect(setSpeedGaugeValue)
+speedThread.start()
 
 r = app.exec_()
 
-rpmThread.exit()
+speedThread.exit()
 sys.exit(r)

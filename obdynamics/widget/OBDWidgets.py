@@ -1,3 +1,4 @@
+from PySide import QtCore
 from PySide.QtCore import Property, Signal, QRectF, QAbstractAnimation, Slot, QPropertyAnimation
 from PySide.QtDeclarative import QDeclarativeItem
 from PySide.QtGui import QColor, QPen, QBrush, QGraphicsItem, QPainter
@@ -88,6 +89,12 @@ class CircularGauge(QDeclarativeItem):
 
     def setMaxValue(self, maxValue):
         self._maxValue = maxValue
+
+    def getInitAnimation(self):
+        return self._initAnimation
+
+    def setInitAnimation(self, initAnimation):
+        self._initAnimation = initAnimation
 
     radius = Property(int, getRadius, setRadius, notify=radiusChanged)
     stroke = Property(int, getStroke, setStroke, notify=strokeChanged)

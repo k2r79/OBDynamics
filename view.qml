@@ -3,8 +3,8 @@ import "./obdynamics/widget"
 
 Rectangle {
     color: "#111111"
-    width: 1000
-    height: 800
+    width: 480
+    height: 320
 
-    RPMGauge {}
+    SpeedGauge {}
 }
