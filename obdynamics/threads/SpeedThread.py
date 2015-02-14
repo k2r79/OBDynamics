@@ -13,6 +13,7 @@ class SpeedThread(QThread):
 
     def __init__(self, *args, **kwargs):
         super(SpeedThread, self).__init__(*args, **kwargs)
+
         # OBD Connection
         self._obdutils = OBDUtils(MainApp.configuration.host_mac, MainApp.configuration.host_port, False)
 
