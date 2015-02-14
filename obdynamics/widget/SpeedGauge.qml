@@ -3,7 +3,7 @@ import ODBWidgets 1.0
 
 Rectangle {
     id: circularGaugeContainer
-    width: 240
+    width: 220
     height: 320
     color: "transparent"
 
@@ -17,7 +17,7 @@ Rectangle {
     CircularGauge {
         id: speedGauge
         objectName: "speedGauge"
-        radius: 120
+        radius: 100
         stroke: 35
         strokeColor: Qt.rgba(0 / 255, 150 / 255, 255 / 255, 0.7)
 

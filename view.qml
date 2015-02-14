@@ -8,7 +8,7 @@ Rectangle {
 
     Grid {
         columns: 2
-        spacing: 40
+        spacing: 15
         anchors.centerIn: parent
 
         SpeedGauge {}
@@ -21,65 +21,81 @@ Rectangle {
             Text {
                 text: "0 to 30 km/h : "
                 color: "white"
-                font.pixelSize: 18
+                font.pixelSize: 16
             }
 
             Text {
-                id: "timeToThirty"
+                id: timeToThirty
 
                 text: "-"
 
                 color: "white"
-                font.pixelSize: 18
+                font.pixelSize: 16
             }
 
             // 0 to 60 km/h
             Text {
                 text: "0 to 60 km/h : "
                 color: "white"
-                font.pixelSize: 18
+                font.pixelSize: 16
             }
 
             Text {
-                id: "timeToSixty"
+                id: timeToSixty
 
                 text: "-"
 
                 color: "white"
-                font.pixelSize: 18
+                font.pixelSize: 16
             }
 
             // 0 to 80 km/h
             Text {
                 text: "0 to 80 km/h : "
                 color: "white"
-                font.pixelSize: 18
+                font.pixelSize: 16
             }
 
             Text {
-                id: "timeToEighty"
+                id: timeToEighty
 
                 text: "-"
 
                 color: "white"
-                font.pixelSize: 18
+                font.pixelSize: 16
             }
 
             // 0 to 100 km/h
             Text {
                 text: "0 to 100 km/h : "
                 color: "white"
-                font.pixelSize: 18
+                font.pixelSize: 16
             }
 
             Text {
-                id: "timeToHundred"
+                id: timeToHundred
 
                 text: "-"
 
                 color: "white"
-                font.pixelSize: 18
+                font.pixelSize: 16
             }
         }
+    }
+
+    function setZeroToThirtyText(newText) {
+        timeToThirty.text = newText
+    }
+
+    function setZeroToSixtyText(newText) {
+        timeToSixty.text = newText
+    }
+
+    function setZeroToEightyText(newText) {
+        timeToEighty.text = newText
+    }
+
+    function setZeroToHundredText(newText) {
+        timeToHundred.text = newText
     }
 }
