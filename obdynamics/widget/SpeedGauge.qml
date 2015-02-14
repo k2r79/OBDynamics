@@ -3,8 +3,6 @@ import ODBWidgets 1.0
 
 Rectangle {
     id: circularGaugeContainer
-    anchors.left: parent.left
-    anchors.margins: 20
     width: 240
     height: 320
     color: "transparent"
@@ -35,7 +33,7 @@ Rectangle {
                 properties: "value"
                 from: 0
                 to: speedGauge.maxValue
-                duration: 750
+                duration: 1000
             }
             NumberAnimation {
                 target: speedGauge

@@ -1,3 +1,4 @@
+import math
 from PySide import QtCore
 from PySide.QtCore import Property, Signal, QRectF, QAbstractAnimation, Slot, QPropertyAnimation
 from PySide.QtDeclarative import QDeclarativeItem
@@ -33,6 +34,12 @@ class CircularGauge(QDeclarativeItem):
     def paint(self, painter, options, widget):
         pen = QPen(self._strokeColor)
         pen.setWidth(self._stroke)
+
+        # Set the stroke color according to the value
+        progress = float(self._value) / float(self._maxValue)
+        self._strokeColor.setRedF(progress)
+        self._strokeColor.setGreenF(math.sin(progress * 3.1))
+        self._strokeColor.setBlueF(1.0 - progress)
 
         brush = QBrush(self._strokeColor)
 
